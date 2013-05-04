@@ -1,0 +1,15 @@
+delete from passwd;
+delete from shadow;
+set @x = unix_timestamp(current_timestamp());
+set @y = '42..+-nml';
+set @z = 'nml';
+
+insert into shadow 
+values(@z, @x, sha2(concat(@y,@x), 512));
+
+
+insert into passwd 
+values(@z, 'A', current_timestamp, current_time);
+
+select * from shadow;
+select * from passwd;                                                                              

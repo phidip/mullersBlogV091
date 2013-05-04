@@ -1,0 +1,69 @@
+body {
+    background-color: silver;
+    color: darkblue;
+    font-family: Helvetica, sans-serif;
+}
+h1 { 
+    text-align: center;
+}
+
+footer, header, nav, section {
+    width: 80%;
+    margin: 1em auto;
+}
+header, footer {
+    background-color: darkblue;
+    color: #ffff99;
+}
+header h1 a {
+    color: #ffff99;
+    text-decoration: none;
+}
+footer {
+    font-size: 80%;
+}
+#country { 
+    min-height: 250px;
+    border: 1px solid red; 
+}
+table {
+    margin: 1em auto;
+}
+table, td, th {
+    border: 1px solid darkblue;
+}
+caption {
+    font-weight: bold;
+}
+.am {
+    text-align: right;
+}
+label {
+    font-weight: bold;
+}
+ul {
+    padding: 0;
+    list-style:none;
+}
+nav ul {
+    text-align: center;
+}
+nav ul li {
+    border: 3px outset gray;
+    display: inline;
+    padding: 3px;
+}
+#login {
+    border: 1px solid darkblue;
+    margin: 2em auto;
+    padding: 0 1em;
+    text-align: left;
+    width: 250px;
+}
+#login li { margin-bottom: 5px;}
+#login p {text-align: center;}
+.colred {background-color: red;}
+.colgron {background-color: green;}
+#cont {font-family: Helvetica, sans-serif;}
+#avaj {margin-right: 10px;}
+#copy {margin-right: 10px;}

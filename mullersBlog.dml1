@@ -1,0 +1,79 @@
+set @x = unix_timestamp(current_timestamp());
+set @y = 'alice';
+set @z = 'alice';
+
+insert into shadow 
+values(@z, @x, sha2(concat(@y,@x), 512));
+
+insert into passwd 
+values(@z, 'O', current_timestamp, current_time);
+
+set @y = 'bob';
+set @z = 'bob';
+
+insert into shadow 
+values(@z, @x, sha2(concat(@y,@x), 512));
+
+insert into passwd 
+values(@z, 'O', current_timestamp, current_time);
+
+set @y = 'charlie';
+set @z = 'charlie';
+
+insert into shadow 
+values(@z, @x, sha2(concat(@y,@x), 512));
+
+insert into passwd 
+values(@z, 'O', current_timestamp, current_time);
+
+select * from shadow;
+select * from passwd; 
+
+-- post from nml, tagged, answered by alice
+insert into post    
+values('nml', '2013-05-01 10:00:00', 'Hopefully not a nut ditto. My first blog post is about database technology, what else? It is ...', 'This blog is a case');
+insert into tags (author, clocked, tag)
+values('nml', '2013-05-01 10:00:00', 'Blog');
+insert into tags (author, clocked, tag)
+values('nml', '2013-05-01 10:00:00', 'Database');
+insert into tags (author, clocked, tag)
+values('nml', '2013-05-01 10:00:00', 'Security');
+
+insert into post    
+values('alice', '2013-05-01 10:05:42', 'Bollocks! Now listen to this in stead ...', 'This blog is a case');
+insert into thread
+values('nml', '2013-05-01 10:00:00','alice', '2013-05-01 10:05:42');   
+insert into tags (author, clocked, tag)
+values('alice', '2013-05-01 10:05:42', 'Blog');
+insert into tags (author, clocked, tag)
+values('alice', '2013-05-01 10:05:42', 'Database');
+insert into tags (author, clocked, tag)
+values('alice', '2013-05-01 10:05:42', 'Security');
+
+-- bob to alice intercepted by charlie
+insert into post    
+values('bob', '2013-05-01 11:11:11', 'Table 42 in the cafeteria at 12?', 'Secret');
+insert into tags (author, clocked, tag)
+values('bob', '2013-05-01 11:11:11', 'Secret');
+
+insert into post    
+values('alice', '2013-05-01 11:21:42', 'Cant wait...', 'Secret');
+insert into tags (author, clocked, tag)
+values('alice', '2013-05-01 11:21:42', 'Secret');
+insert into thread
+values('bob', '2013-05-01 11:11:11', 'alice', '2013-05-01 11:21:42'); 
+
+insert into post    
+values('charlie', '2013-05-01 11:27:12', 'The man in the middle caught you ...', 'Secret');
+insert into tags (author, clocked, tag)
+values('charlie', '2013-05-01 11:27:12', 'Secret');
+insert into thread
+values('alice', '2013-05-01 11:21:42', 'charlie', '2013-05-01 11:27:12');   
+
+select * from tags;
+
+select post.author, post.clocked, post.subject, post.content
+from post left join thread 
+on thread.author = post.author 
+and thread.clocked = post.clocked 
+order by post.subject, post.clocked;
