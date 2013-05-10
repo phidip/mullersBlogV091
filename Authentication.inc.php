@@ -1,4 +1,6 @@
+<?php
 interface Authentication {
-  function authenticate($user, $pwd, $token, $database);
-  function isLoggedIn();
+  public function authenticate($user, $pwd);
+  public function isLoggedIn();
 }
+?>

@@ -1,0 +1,137 @@
+<!DOCTYPE appendix [
+<!ENTITY % uvmatent SYSTEM "uvmat_entities.ent">
+%uvmatent;
+]>      
+<appendix xml:id="experimental091"
+    version="5.0" xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Experimental Code, Mullers Blog V0.91</title>
+    <section>
+        <title>Classes: HTML5, Database, Table, Authentication</title>
+        <example>
+            <title>Muller's HTML5 Class HTML5.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/HTML5.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Muller's HTML5e Class HTML5e.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/HTML5e.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Muller's Table Class Table.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/Table.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Muller's Tablee Class Tablee.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/Tablee.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Muller's Database Handler DbH.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/DbH.inc.php" parse="text"/></programlisting>
+        </example>
+    </section>
+
+    <section>
+        <title>mullersBlog</title>
+        <figure>
+            <title>Mullers Blog Database dia</title> 
+            <mediaobject>
+                <imageobject>
+                    <imagedata format="PNG" fileref="../code/BlogCaseN0/mullersBlog.png"/>
+                </imageobject> 
+            </mediaobject>
+        </figure>
+        <example>
+            <title>Mullers Blog Database ddl</title>
+            <programlisting language="sql"><xi:include href="/home/nml/Git/BlogCaseN0/mullersBlog.sql" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database dml1</title>
+            <programlisting language="sql"><xi:include href="/home/nml/Git/BlogCaseN0/mullersBlog.dml1" parse="text"/></programlisting>
+        </example>
+
+        <figure>
+            <title>Mullers Blog Site Map</title> 
+            <mediaobject>
+                <imageobject>
+                    <imagedata format="PNG" fileref="../code/BlogCaseN0/mullersBlogSiteMap.png"/>
+                </imageobject> 
+            </mediaobject>
+        </figure>
+
+        <example>
+            <title>Mullers Blog Database blogIndex.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogIndex.php" parse="text"/></programlisting>
+            <para>
+                <link xlink:href="../code/BlogCaseN0/blogIndex.php">
+                    Live
+                </link>
+            </para>
+        </example>
+        <example>
+            <title>Mullers Blog Database Authentication.inc.php, an Interface</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/Authentication.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database authenticator.inc.php, a Class</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/authenticator.inc.php" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Mullers Blog Database blogPostList.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPostList.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogPostDisplay.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPostDisplay.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogPostReply.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPostReply.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogPostSelect.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPostSelect.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogPostForm.inc.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPostForm.inc.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogJsLib.js</title>
+            <programlisting language="javascript"><xi:include href="/home/nml/Git/BlogCaseN0/blogJsLib.js" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Mullers Blog Database blogPost.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPost.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogPostDb.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogPostDb.php" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Mullers Blog Database blogImageUpload.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogImageUpload.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogImagePostDb.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogImagePostDb.php" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Mullers Blog Database blogImageDisplaySolo.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogImageDisplaySolo.php" parse="text"/></programlisting>
+        </example>
+        <example>
+            <title>Mullers Blog Database blogImageView.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogImageView.php" parse="text"/></programlisting>
+        </example>
+
+        <example>
+            <title>Mullers Blog Database blogLogout.php</title>
+            <programlisting language="php"><xi:include href="/home/nml/Git/BlogCaseN0/blogLogout.php" parse="text"/></programlisting>
+        </example>
+    </section>
+</appendix>
