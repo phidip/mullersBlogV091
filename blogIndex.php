@@ -1,27 +1,34 @@
 <?php
   session_start();
+  require_once('blogParams.inc.php');
   require_once('DbH.inc.php');
-  $dbh = new DbH("mullersBlog");
+  $dbh = new DbH($db);
   require_once("authentication.inc.php");
   require_once('HTML5.inc.php');
-
-  $doc = new HTML5("Muller&apos;s Blog", "en");
+  require_once('HTML5e.inc.php');
+  $doc = new HTML5e("Umlaute");
+  
   print($doc->getTop());
-  print($doc->prtLink("./ass1M1.css"));
+  print($doc->toLink("./blog1.css"));
+  print($doc->toLink("./blog2.css"));
 
   /* 
     if not logged in
      and if yes to data from form
      then authenticate
    */
-  if (!isset($_SESSION['blogUser'])) {
+  if (!isset($_SESSION[$loginToken])) {
     if (isset($_POST['userid']) && isset($_POST['pwd'])) {
       authenticate($_POST['userid'], $_POST['pwd'], '#', $dbh);
     }
   }
+  // header def method in html5 med h1 plain
+  // override in extend
+  // css total rewrite
+  // interface til auth
   
   print($doc->getNeck());
-  printf("<header><h1>%s</h1></header>", $doc->getTitle());
+  printf($doc->toHeader());
   include "blogNav.inc.php";   // navigation menu
   print("<section id='login'>\n");
 
@@ -30,7 +37,7 @@
     or if not logged in
    */
   if ( isset($_GET['errorcode'])
-        || !isset($_SESSION['blogUser'])) {
+        || !isset($_SESSION[$loginToken])) {
 
   print("<p class='colred'>Først login!</p>\n");
   printf("<form action='https://localhost%s' 
@@ -61,5 +68,5 @@
 <?php
   }
   print("</section>\n");
-  print($doc->getFoot());
+  print($doc->toFooter().$doc->getFoot());
 ?>

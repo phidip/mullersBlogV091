@@ -1,0 +1,17 @@
+header {
+    height: 1.5em;
+    text-align: left;
+}
+header p:first-child {
+    float: left;
+    margin: 0;
+    padding: 0 5px;
+    width: 20%;
+}
+header p:last-child {
+    float: right;
+    margin: 0;
+    padding: 0 5px;
+    text-align: right;
+    width: 75%;
+}

@@ -1,6 +1,7 @@
 <?php
+  require_once('blogParams.inc.php');
   require_once('DbH.inc.php');
-	$dbh = new DbH("mullersBlog");
+  $dbh = new DbH($db);
 	if(isset($_GET['pid']) && is_numeric($_GET['pid'])) {
 		$sql  = "select mimetype, resourceitself";
 		$sql .= " from resource";

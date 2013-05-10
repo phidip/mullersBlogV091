@@ -1,30 +1,30 @@
 <?php
   session_start();
-  if (!isset($_SESSION['blogUser'])) {  // am I logged on?
+  require_once('blogParams.inc.php');
+  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
     header("Location: ./blogIndex.php?errorcode=2");
   }                                 // if not, go and do it!
 
-  $copy = "&copy; NML, 2013";
-  $title = "Muller&apos;s Blog";
-  $db = "mullersBlog";
-  $today = strftime("%F", time());
-
   require_once('DbH.inc.php');
   $dbh = new DbH($db);
+  require_once('Table.inc.php');
+  require_once('Tablee.inc.php');
   require_once('HTML5.inc.php');
-  $doc = new HTML5($title, "en");
-
-  print($doc->getTop());            // start outputting html
-  $doc->prtLink("./ass1M1.css");
-  $doc->prtScript("./forumjslib.js");
+  require_once('HTML5e.inc.php');
+  $doc = new HTML5e("Umlaute");
+  
+  print($doc->getTop());
+  print($doc->toLink("./blog1.css"));
+  print($doc->toLink("./blog2.css"));
+  print($doc->toScript("./blogJsLib.js"));
   print($doc->getNeck());
-  $doc->prtHeader("blogIndex.php");
+  print($doc->toHeader());
 
   print("<section><h2>Enter Post</h2>\n");
   printf("<p>\n<b>User:</b> %s\n<b>Date:</b> %s\n</p>"
-        , $_SESSION['blogUser']
+        , $_SESSION[$loginToken]
         , $today);
   include "./blogPostForm.inc.php";
-  printf("</section><footer><p>%s</p></footer>\n", $copy);
-  print($doc->getFoot());
+  print("</section>\n");
+  print($doc->toFooter().$doc->getFoot());
 ?>

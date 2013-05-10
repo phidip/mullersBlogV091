@@ -8,14 +8,17 @@ class HTML5 {
 	const FOOT      = "    </body>\n</html>\n";
 	const LINK      = '        <link rel="stylesheet" href="%s"/>';
 	const SCRIPT    = '        <script src="%s"></script>';
+	const COPY      = '&copy; NML 2013';
 
 	private $title; 
 	private $lang;
 	private $top;
+	private $root;
 
-	public function __construct($title, $lang='da') {
+	public function __construct($title, $root="./index.php", $lang="en") {
 		$this->title = $title;
 		$this->lang = $lang;
+		$this->root = $root;
 		$this->createTop();
 	}
 
@@ -36,21 +39,31 @@ class HTML5 {
 	function getNeck() {
 		return self::NECK;
 	}
+	function getRoot() {
+		return $this->root;
+	}
 	public function getTop() {
 		return $this->top;
 	}
 	public function getTitle() {
 		return $this->title;
 	}
-	public function prtHeader($root) {
-		printf("<header><h1><a href='%s'>%s</a></h1></header>\n"
-		       , $root, $this->getTitle());
+
+	public function toHeader() {
+		return sprintf("<header><a href='%s'>%s</a></header>\n"
+		       , $this->root, $this->getTitle());
 	}
-	public function prtLink($l) {
-		printf(self::LINK."\n", $l);
+
+	public function toFooter() {
+		return sprintf("<footer>%s</footer>\n"
+		       , self::COPY);
 	}
-	public function prtScript($s) {
-		printf(self::SCRIPT."\n", $s);
+
+	public function toLink($l) {
+		return sprintf(self::LINK."\n", $l);
+	}
+	public function toScript($s) {
+		return sprintf(self::SCRIPT."\n", $s);
 	}
 }
 ?>

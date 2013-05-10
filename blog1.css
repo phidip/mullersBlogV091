@@ -1,0 +1,70 @@
+body {
+    background-color: silver;
+    color: darkblue;
+    font-family: Helvetica, sans-serif;
+    margin: 0 auto;
+    min-width: 800px;
+    width: 80%;
+}
+footer, header, nav, section {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header, footer {
+    background-color: black;
+    color: #ffff99;
+}
+header {
+    font-family: "Latin Modern Mono", monospace;
+    font-size: 4em;
+    text-align: right;
+}
+header a {
+    text-decoration: none;
+    color: #ffff99;
+}
+footer {
+    font-size: 80%;
+}
+table {
+    margin: 1em auto;
+}
+table, td, th {
+    border: 1px solid darkblue;
+}
+caption {
+    font-weight: bold;
+}
+.am {
+    text-align: right;
+}
+label {
+    font-weight: bold;
+}
+ul {
+    padding: 0;
+    list-style:none;
+}
+nav ul {
+    text-align: center;
+}
+nav ul li {
+    border: 3px outset gray;
+    display: inline;
+    padding: 3px;
+}
+#login {
+    border: 1px solid darkblue;
+    margin: 2em auto;
+    padding: 0 1em;
+    text-align: left;
+    width: 250px;
+}
+#login li { margin-bottom: 5px;}
+#login p {text-align: center;}
+.colred {background-color: red;}
+.colgron {background-color: green;}
+#cont {font-family: Helvetica, sans-serif;}
+#avaj {margin-right: 10px;}
+#copy {margin-right: 10px;}

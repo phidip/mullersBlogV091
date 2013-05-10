@@ -1,30 +1,30 @@
 <?php
   session_start();
-  if (!isset($_SESSION['blogUser'])) {  // am I logged on?
-    header("Location: ../code/forumindex.php?errorcode=2");
+  require_once('blogParams.inc.php');
+  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
+    header("Location: ".$root."?errorcode=2");
   }                                 // if not, go and do it!
-
-  $copy = "&copy; NML, 2013";
-  $title = "Muller&apos;s Blog";
-  $db = "mullersBlog";
-  $today = strftime("%F", time());
 
   require_once('DbH.inc.php');
   $dbh = new DbH($db);
+  require_once('Table.inc.php');
+  require_once('Tablee.inc.php');
   require_once('HTML5.inc.php');
-  $doc = new HTML5($title, "en");
-
+  require_once('HTML5e.inc.php');
+  $doc = new HTML5e("Umlaute");
+  
   print($doc->getTop());
-  $doc->prtLink("./ass1M1.css");
+  print($doc->toLink("./blog1.css"));
+  print($doc->toLink("./blog2.css"));
+  print($doc->toScript("./blogJsLib.js"));
   print($doc->getNeck());
-  $doc->prtHeader("blogIndex.php");
-  include "blogNav.inc.php";
+  print($doc->toHeader());
 ?> 
   <section>
     <h2>Display Images</h2>
 <?php
     printf("<p>\n<b>User:</b> %s\n<b>Date:</b> %s\n</p>"
-        , $_SESSION['blogUser']
+        , $_SESSION[$loginToken]
         , $today);
     
     $sql  = "select id, mimetype, alttext, caption, avatar
@@ -50,5 +50,5 @@
 ?>
 
 <?php
-  print($doc->getFoot());
+  print($doc->toFooter().$doc->getFoot());
 ?>

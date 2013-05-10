@@ -1,7 +1,8 @@
 <?php
     session_start();
+    require_once('blogParams.inc.php');
             // get session cookie handle
-    unset($_SESSION['blogUser']);
+    unset($_SESSION[$loginToken]);
             // unset session login var
     if (isset($_COOKIE[session_name()])) {
       setcookie(session_name(), '', time()-86400, '/');

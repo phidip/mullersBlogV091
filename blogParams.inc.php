@@ -1,6 +1,6 @@
 <?php
-  $copy = "&copy; NML, 2013";       // setup config vars
-  $title = "Muller&apos;s Blog";
-  $db = "mullersBlog";
-  $today = strftime("%F", time());
+  $db = "mullersBlog";  // database name
+  $root="./blogIndex.php";  // site root
+  $loginToken = "blogUser"; // indicator for login
+  $today = strftime("%F %T", time());  //service var
 ?>

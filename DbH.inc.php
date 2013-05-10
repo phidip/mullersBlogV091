@@ -33,7 +33,11 @@ class DbH extends mysqli {
     }
     
     function fetch_array() {
-        return $rowArray = $this->result->fetch_array();
+        return $rowArray = $this->result->fetch_array(MYSQLI_ASSOC);
+    }
+    
+    function fetch_row() {
+        return $rowArray = $this->result->fetch_row();
     }
     
     function fetch_object() {

@@ -1,6 +1,7 @@
 <?php
   session_start();
-  if (!isset($_SESSION['blogUser'])) {  // am I logged on?
+  require_once('blogParams.inc.php');
+  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
     header("Location: ../code/forumindex.php?errorcode=2");
   }                                 // if not, go and do it!
 
@@ -43,10 +44,10 @@
                     , $_POST['caption']
                     , $avatar
                     , $copyr
-                    , $_SESSION['blogUser']
+                    , $_SESSION[$loginToken]
                     , $image
                     );
   $dbh->query($sql);
   $dbh->query('commit;');
-  header("Location: ./blogIndex.php?x=2");
+  header("Location: ".$root."?x=2");
 ?>
