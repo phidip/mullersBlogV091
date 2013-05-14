@@ -1,16 +1,17 @@
 <?php
   session_start();
   require_once('blogParams.inc.php');
-  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
-    header("Location: ".$root."?errorcode=2");
-  }                                 // if not, go and do it!
-
   require_once('DbH.inc.php');
-  $dbh = new DbH($db);
+  require_once('Authentication.inc.php');
+  require_once('authenticator.inc.php');
   require_once('Table.inc.php');
   require_once('Tablee.inc.php');
   require_once('HTML5.inc.php');
   require_once('HTML5e.inc.php');
+
+  $dbh = new DbH($db);
+  $auth = new Authenticator($dbh, $root, $loginToken);
+  $auth->isLoggedIn(); //check login - new way
   $doc = new HTML5e("Umlaute");
   
   print($doc->getTop());
@@ -19,10 +20,9 @@
   print($doc->toScript("./blogJsLib.js"));
   print($doc->getNeck());
   print($doc->toHeader());
-?> 
-  <section>
-    <h2>Display Images</h2>
-<?php
+
+  print("<section><h2>Display Images Summarily</h2>\n");
+
     printf("<p>\n<b>User:</b> %s\n<b>Date:</b> %s\n</p>"
         , $_SESSION[$loginToken]
         , $today);
@@ -47,8 +47,5 @@
 		printf("<tr><td>%s</td></tr>\n", $out->user);
 	}
     print ("</table>");
-?>
-
-<?php
-  print($doc->toFooter().$doc->getFoot());
+  print("</table>".$doc->toFooter().$doc->getFoot());
 ?>

@@ -1,9 +1,12 @@
 <?php
   session_start();
   require_once('blogParams.inc.php');
-  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
-    header("Location: ".$root."?errorcode=2");
-  }                                 // if not, go and do it!
+  require_once('DbH.inc.php');
+  require_once('Authentication.inc.php');
+  require_once('authenticator.inc.php');
+  $dbh = new DbH($db);
+  $auth = new Authenticator($dbh, $root, $loginToken);
+  $auth->isLoggedIn(); //check login - new way
 
   if (!(
           (isset($_POST['subject']) && $_POST['subject'] != '')
@@ -12,8 +15,6 @@
       ) {
     header("Location: " . $root);
   } 
-  require_once('DbH.inc.php');
-  $dbh = new DbH($db);
 
   $sql = "start transaction;";
   $dbh->query($sql);

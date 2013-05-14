@@ -2,10 +2,13 @@
   session_start();
   require_once('blogParams.inc.php');
   require_once('DbH.inc.php');
-  $dbh = new DbH($db);
-  require_once("authentication.inc.php");
+  require_once('Authentication.inc.php');
+  require_once('authenticator.inc.php');
   require_once('HTML5.inc.php');
   require_once('HTML5e.inc.php');
+
+  $dbh = new DbH($db);
+  $auth = new Authenticator($dbh, "blogIndex.php", "blogUser"); 
   $doc = new HTML5e("Umlaute");
   
   print($doc->getTop());
@@ -19,7 +22,7 @@
    */
   if (!isset($_SESSION[$loginToken])) {
     if (isset($_POST['userid']) && isset($_POST['pwd'])) {
-      authenticate($_POST['userid'], $_POST['pwd'], '#', $dbh);
+      $auth->authenticate($_POST['userid'], $_POST['pwd'], '#', $dbh);
     }
   }
   // header def method in html5 med h1 plain

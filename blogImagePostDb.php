@@ -1,9 +1,13 @@
 <?php
   session_start();
   require_once('blogParams.inc.php');
-  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
-    header("Location: ../code/forumindex.php?errorcode=2");
-  }                                 // if not, go and do it!
+  require_once('DbH.inc.php');
+  require_once('Authentication.inc.php');
+  require_once('authenticator.inc.php');
+
+  $dbh = new DbH($db);
+  $auth = new Authenticator($dbh, $root, $loginToken);
+  $auth->isLoggedIn(); //check login - new way
 
   if (!(
           (isset($_POST['alttext']) && $_POST['alttext'] != '')
@@ -11,7 +15,7 @@
             && (isset($_FILES['image']) && $_FILES['image']['size'] > 0)
         )
       ) {
-    header("Location: ../code/blogIndex.php?x=1");
+    header("Location: ../code/".$root."?x=1");
   } 
   $db = "mullersBlog";
   $today = strftime("%F", time());

@@ -1,16 +1,17 @@
 <?php
   session_start();
   require_once('blogParams.inc.php');
-  if (!isset($_SESSION[$loginToken])) {  // am I logged on?
-    header("Location: ".$root."?errorcode=2");
-  }                                 // if not, go and do it!
-
   require_once('DbH.inc.php');
-  $dbh = new DbH($db);
+  require_once('Authentication.inc.php');
+  require_once('authenticator.inc.php');
   require_once('Table.inc.php');
   require_once('Tablee.inc.php');
   require_once('HTML5.inc.php');
   require_once('HTML5e.inc.php');
+
+  $dbh = new DbH($db);
+  $auth = new Authenticator($dbh, $root, $loginToken);
+  $auth->isLoggedIn(); //check login - new way
   $doc = new HTML5e("Umlaute");
   
   print($doc->getTop());
